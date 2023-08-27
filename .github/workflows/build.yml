@@ -14,7 +14,7 @@ jobs:
           planid: ${{ steps.planid.outputs.planid }}
         env:
             TECTON_API_KEY: ${{ secrets.TECTON_API_KEY }}
-            API_SERVICE: $API_SERVICE
+            API_SERVICE: ${{API_SERVICE}}
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-python@v4
@@ -22,6 +22,10 @@ jobs:
                 python-version: 3.9
                 cache: pip
             - run: pip install -r requirements.txt
+
+            - name: Select workspace
+              run: tecton worksapce select ${{TECTON_WORKSPACE}}
+
 
             - name: Run Tecton plan
               run: tecton plan | tee output.log
