@@ -13,7 +13,7 @@ jobs:
           planid: ${{ steps.planid.outputs.planid }}
         env:
             TECTON_API_KEY: ${{ secrets.TECTON_API_KEY }}
-            API_SERVICE: ${{var.value.API_SERVICE}}}} 
+            API_SERVICE: ${{env.API_SERVICE}}}} 
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-python@v4
