@@ -23,8 +23,8 @@ jobs:
                 cache: pip
             - run: pip install -r requirements.txt
 
-            - name: Select workspace
-              run: tecton worksapce select ${TECTON_WORKSPACE}
+            # - name: Select workspace
+            #   run: tecton worksapce select ${TECTON_WORKSPACE}
 
 
             - name: Run Tecton plan
