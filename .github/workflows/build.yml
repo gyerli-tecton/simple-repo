@@ -36,3 +36,11 @@ jobs:
               run: |
                 PLANID=$(cat output.log | perl -wne  '/Generated plan ID is ([0-9a-f]+)/i and print $1')         
                 echo "planid=$PLANID" >> "$GITHUB_OUTPUT"
+    apply:
+        runs-on: ubuntu-latest
+        needs: plan
+        environment: env-dev
+        steps:
+            - env:
+                PLANID: ${{needs.plan.outputs.planid}}
+              run: echo "$PLANID"
