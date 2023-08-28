@@ -15,6 +15,7 @@ jobs:
         env:
             TECTON_API_KEY: ${{ secrets.TECTON_API_KEY }}
             API_SERVICE: ${{ secrets.API_SERVICE }}
+            WORKSPACE: ${{ vars.WORKSPACE }}
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-python@v4
@@ -24,7 +25,7 @@ jobs:
             - run: pip install -r requirements.txt
 
             - name: Select workspace
-              run: tecton workspace select simple-repo
+              run: tecton workspace select $WORKSPACE
 
 
             - name: Run Tecton plan
