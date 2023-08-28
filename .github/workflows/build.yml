@@ -24,7 +24,7 @@ jobs:
             - run: pip install -r requirements.txt
 
             - name: Select workspace
-              run: tecton worksapce select simple-repo
+              run: tecton workspace select simple-repo
 
 
             - name: Run Tecton plan
